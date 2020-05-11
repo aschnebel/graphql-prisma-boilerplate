@@ -1,0 +1,51 @@
+{
+  "name": "graphql-prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "heroku-postbuild": "babel src --out-dir dist --copy-files",
+    "start:dev": "env-cmd -f ./config/dev.env nodemon src/index.js --ext js,graphql --exec babel-node",
+    "get-schema": "graphql get-schema -p prisma --dotenv config/dev.env",
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand"
+  },
+  "jest": {
+    "globalSetup": "./tests/jest/globalSetup.js",
+    "globalTeardown": "./tests/jest/globalTeardown.js"
+  },
+  "author": "Alexander Schnebel",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-spread": "^7.8.3",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.9.6",
+    "apollo-boost": "^0.4.7",
+    "apollo-cache-inmemory": "^1.2.10",
+    "apollo-client": "^2.4.2",
+    "apollo-link": "^1.2.3",
+    "apollo-link-error": "^1.1.1",
+    "apollo-link-http": "^1.5.5",
+    "apollo-link-ws": "^1.0.9",
+    "apollo-utilities": "^1.0.21",
+    "bcryptjs": "^2.4.3",
+    "cross-fetch": "^3.0.4",
+    "env-cmd": "^10.1.0",
+    "graphql": "^0.13.2",
+    "graphql-cli": "^3.0.14",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "prisma-binding": "^2.3.16",
+    "subscriptions-transport-ws": "^0.9.15"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "babel-jest": "^25.5.1",
+    "jest": "^25.5.3",
+    "nodemon": "^1.17.5"
+  }
+}
